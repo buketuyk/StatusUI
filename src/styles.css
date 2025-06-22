@@ -1,4 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+/* Light theme (default) */
+.light-theme {
+  --primary-color: #6750A4;  /* M3 mor tonu */
+  --on-primary-color: white;
+  --background-color: #FFFBFE;
+  --text-color: black;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Dark theme */
+.dark-theme {
+  --primary-color: #D0BCFF;
+  --on-primary-color: black;
+  --background-color: #1C1B1F;
+  --text-color: white;
+}
+
+/* Angular Material renklerini override etmek için */
+.light-theme .mat-toolbar,
+.light-theme .mat-button,
+.light-theme .mat-raised-button {
+  background-color: var(--primary-color) !important;
+  color: var(--on-primary-color) !important;
+}
+
+.dark-theme .mat-toolbar,
+.dark-theme .mat-button,
+.dark-theme .mat-raised-button {
+  background-color: var(--primary-color) !important;
+  color: var(--on-primary-color) !important;
+}
+
+body.light-theme {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+body.dark-theme {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
