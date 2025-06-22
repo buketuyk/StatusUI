@@ -1,8 +1,16 @@
 <h2>Status List</h2>
-<ul>
-    <li *ngFor = "let status of statuses">
-        <a routerLink="/add">Yeni Status Ekle </a>
-        <a [routerLink]="['/status', status.id]">{{status.id}} - {{status.name}}</a>
-        <button mat-button color="warn" (click)="deleteStatus(status.id)">Sil</button>
-    </li>
-</ul>
+
+<a mat-flat-button color="primary" routerLink="/add" style="margin-bottom: 16px; display: inline-block;">
+    + New Status
+</a>
+
+<mat-list>
+    <mat-list-item *ngFor = "let status of statuses" class="status-item">
+    <a matLine [routerLink]="['/status', status.id]" style="flex-grow: 1;">
+      {{ status.id }} - {{ status.name }}
+    </a>
+    <button mat-icon-button color="warn" aria-label="Sil" (click)="deleteStatus(status.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+    </mat-list-item>
+</mat-list>

@@ -1,7 +1,13 @@
 <h2>Yeni Statu Ekle</h2>
-<form (ngSubmit)="addStatus()">
-    <label for="name">Statu Adi:</label>
-    <input type="text" id="name" [(ngModel)]="status.name" name="name" required>
-    <br /><br />
-    <button type="submit">Ekle</button>
+
+<form (ngSubmit)="addStatus()" #statusForm="ngForm">
+  <mat-form-field appearance="fill" style="width: 300px;">
+    <mat-label>Statu Adı</mat-label>
+    <input matInput type="text" id="name" name="name" [(ngModel)]="status.name" required #name="ngModel">
+    <mat-error *ngIf="name.invalid && name.touched">Statu adı zorunludur.</mat-error>
+  </mat-form-field>
+
+  <br /><br />
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="statusForm.invalid">Ekle</button>
 </form>
