@@ -27,6 +27,7 @@ export class StatusListComponent implements OnInit {
   }
 
   deleteStatus(id: number): void {
+    // debugger;
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '300px',
       data: 'Bu statüyü silmek istediğinize emin misiniz?'

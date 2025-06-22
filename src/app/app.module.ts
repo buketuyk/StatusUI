@@ -12,6 +12,8 @@ import { StatusDetailComponent } from './components/status-detail/status-detail.
 import { StatusDeleteComponent } from './components/status-delete/status-delete.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { StatusAddComponent } from './components/status-add/status-add.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     StatusListComponent,
     StatusDetailComponent,
     StatusDeleteComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    StatusAddComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync()

@@ -1,6 +1,7 @@
 <h2>Status List</h2>
 <ul>
     <li *ngFor = "let status of statuses">
+        <a routerLink="/add">Yeni Status Ekle </a>
         <a [routerLink]="['/status', status.id]">{{status.id}} - {{status.name}}</a>
         <button mat-button color="warn" (click)="deleteStatus(status.id)">Sil</button>
     </li>

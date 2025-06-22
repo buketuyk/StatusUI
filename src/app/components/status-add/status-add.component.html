@@ -1,0 +1,7 @@
+<h2>Yeni Statu Ekle</h2>
+<form (ngSubmit)="addStatus()">
+    <label for="name">Statu Adi:</label>
+    <input type="text" id="name" [(ngModel)]="status.name" name="name" required>
+    <br /><br />
+    <button type="submit">Ekle</button>
+</form>

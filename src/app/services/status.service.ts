@@ -26,4 +26,8 @@ export class StatusService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  add(status: Status): Observable<Status> {
+    return this.http.post<Status>(this.apiUrl, status);
+  }
 }
