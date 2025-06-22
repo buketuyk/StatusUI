@@ -1,16 +1,28 @@
-<h2>Status List</h2>
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Status Listesi</mat-card-title>
+    </mat-card-header>
 
-<a mat-flat-button color="primary" routerLink="/add" style="margin-bottom: 16px; display: inline-block;">
-    + New Status
-</a>
+    <mat-card-content>
+      <button mat-raised-button color="primary" routerLink="/add" style="margin-bottom: 16px;">
+        + Yeni Status Ekle
+      </button>
 
-<mat-list>
-    <mat-list-item *ngFor = "let status of statuses" class="status-item">
-    <a matLine [routerLink]="['/status', status.id]" style="flex-grow: 1;">
-      {{ status.id }} - {{ status.name }}
-    </a>
-    <button mat-icon-button color="warn" aria-label="Sil" (click)="deleteStatus(status.id)">
-      <mat-icon>delete</mat-icon>
-    </button>
-    </mat-list-item>
-</mat-list>
+      <mat-list *ngIf="statuses && statuses.length > 0">
+        <mat-list-item *ngFor="let status of statuses">
+          <div class="list-item-content">
+            <a [routerLink]="['/status', status.id]">
+              {{ status.id }} - {{ status.name }}
+            </a>
+            <button mat-icon-button color="warn" (click)="deleteStatus(status.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+
+      <p *ngIf="statuses.length === 0">Hiç status bulunamadı.</p>
+    </mat-card-content>
+  </mat-card>
+</div>

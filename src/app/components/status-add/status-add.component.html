@@ -1,13 +1,21 @@
-<h2>Yeni Statu Ekle</h2>
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>New Status</mat-card-title>
+    </mat-card-header>
 
-<form (ngSubmit)="addStatus()" #statusForm="ngForm">
-  <mat-form-field appearance="fill" style="width: 300px;">
-    <mat-label>Statu Adı</mat-label>
-    <input matInput type="text" id="name" name="name" [(ngModel)]="status.name" required #name="ngModel">
-    <mat-error *ngIf="name.invalid && name.touched">Statu adı zorunludur.</mat-error>
-  </mat-form-field>
+    <mat-card-content>
+      <form (ngSubmit)="addStatus()" #statusForm="ngForm" novalidate>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Status Adı</mat-label>
+          <input matInput type="text" required name="name" [(ngModel)]="status.name" #name="ngModel" />
+          <mat-error *ngIf="name.invalid && name.touched">Status adı zorunludur.</mat-error>
+        </mat-form-field>
 
-  <br /><br />
-
-  <button mat-raised-button color="primary" type="submit" [disabled]="statusForm.invalid">Ekle</button>
-</form>
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" [disabled]="statusForm.invalid">Ekle</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
