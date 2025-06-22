@@ -22,4 +22,8 @@ export class StatusService {
   getById(id: number): Observable<Status> {
     return this.http.get<Status>(`${this.apiUrl}/${id}`);
   }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

@@ -1,0 +1,8 @@
+<h2>Status Detail</h2>
+
+<div *ngIf="status">
+    <p><strong>Id:</strong> {{ status.id }}</p>
+    <p><strong>Name:</strong> {{ status.name }}</p>
+
+    <button (click)="deleteStatus()">Sil</button>
+</div>
