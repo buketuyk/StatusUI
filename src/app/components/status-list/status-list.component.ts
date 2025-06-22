@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StatusService, Status } from '../../services/status.service';
-import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-status-list',
@@ -9,36 +9,27 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
   styleUrls: ['./status-list.component.css']
 })
 export class StatusListComponent implements OnInit {
-  statuses: Status[] = [];
+  displayedColumns: string[] = ['name', 'actions'];
+  dataSource!: MatTableDataSource<Status>;
 
-  constructor(
-    private statusService: StatusService,
-    private dialog: MatDialog
-  ) {}
+  @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(private statusService: StatusService) {}
 
   ngOnInit(): void {
-    this.loadStatuses();
-  }
-
-  loadStatuses(): void {
     this.statusService.getAll().subscribe(data => {
-      this.statuses = data;
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
     });
   }
 
   deleteStatus(id: number): void {
-    // debugger;
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '300px',
-      data: 'Bu statüyü silmek istediğinize emin misiniz?'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
-        this.statusService.delete(id).subscribe(() => {
-          this.statuses = this.statuses.filter(s => s.id !== id);
-        });
-      }
-    });
+    const confirmed = window.confirm('Statuyu silmek istediğinize emin misiniz?');
+    if (confirmed) {
+      this.statusService.delete(id).subscribe(() => {
+        this.dataSource.data = this.dataSource.data.filter(s => s.id !== id);
+        alert('Silme işlemi başarılı.');
+      });
+    }
   }
 }

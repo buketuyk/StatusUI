@@ -1,19 +1,17 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 80vh;
-  padding: 16px;
-}
-
-.card {
-  width: 100%;
+.status-list-card {
   max-width: 600px;
+  margin: 20px auto; /* Sayfa ortalamak için */
+  padding: 20px;
 }
 
-.list-item-content {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
+.status-link {
+  flex: 1; /* Mat-list-item içinde link genişlesin */
+  text-decoration: none;
+  color: #3f51b5;
+  font-weight: 500;
+}
+
+.sort-select {
+  width: 150px;
+  margin-bottom: 10px;
 }
