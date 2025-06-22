@@ -1,14 +1,16 @@
-<mat-card *ngIf="status">
-    <mat-card-header>
-        <mat-card-title>Status Detail</mat-card-title>
-    </mat-card-header>
-    
-    <mat-card-content>
-        <p><strong>Id:</strong> {{ status.id }}</p>
-        <p><strong>Name:</strong> {{ status.name }}</p>
-    </mat-card-content>
-    
-    <mat-card-actions>
-        <button mat-raised-button color="warn" (click)="deleteStatus()">Sil</button>
-    </mat-card-actions>
-</mat-card>
+<div class="container">
+    <mat-card class="card">
+        <mat-card-header>
+                <mat-card-title>Status Detail</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content *ngIf="status">
+            <p><strong>Id:</strong> {{ status.id }}</p>
+            <p><strong>Name:</strong> {{ status.name }}</p>
+        </mat-card-content>
+            
+        <mat-card-actions>
+            <button mat-raised-button color="warn" (click)="deleteStatus()">Sil</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
